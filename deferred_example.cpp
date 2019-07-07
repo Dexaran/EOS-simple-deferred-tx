@@ -1,22 +1,23 @@
-#include <eosiolib/transaction.hpp> // include this for transactions
+#include <eosio/transaction.hpp> // include this for transactions
 
+#include <eosio/eosio.hpp>
 //#include <eosiolib/eosio.hpp>
 //#include <eosiolib/asset.hpp>
 
-class [[eosio::contract("deferred_example_name")]] deferred_example : public eosio::contract
+class [[eosio::contract("deferred_example")]] deferred_example : public eosio::contract
 // Here `deferred_example_name` is the name of your .cpp file where this code is located
 {
   public:
     using contract::contract;
 
     // this action will be called by the deferred transaction
-    ACTION deferred(name from, const string &message)
+    ACTION deferred(eosio::name from, const std::string &message)
     {
         require_auth(from);
-        print("Printing deferred ", from, message);
+        eosio::print("Printing deferred ", from, message);
     }
 
-    ACTION send(name from, const string &message, uint64_t delay)
+    ACTION send(eosio::name from, const std::string &message, uint64_t delay)
     {
         require_auth(from);
 
@@ -26,7 +27,7 @@ class [[eosio::contract("deferred_example_name")]] deferred_example : public eos
         t.actions.emplace_back(
             // when sending to _self a different authorization can be used
             // otherwise _self must be used
-            permission_level(from, "active"_n),
+            eosio::permission_level(from, "active"_n),
             // account the action should be send to
             _self,
             // action to invoke
@@ -43,9 +44,9 @@ class [[eosio::contract("deferred_example_name")]] deferred_example : public eos
         // with this senderId should be replaced
         // if set to false and this senderId already exists
         // this action will fail
-        t.send(now(), from /*, false */);
+        t.send(1, from /*, false */);
 
-        print("Scheduled with a delay of ", delay);
+        eosio::print("Scheduled with a delay of ", delay);
     }
 };
 
