@@ -5,7 +5,7 @@ eosio-cpp -o deferred_example.wasm deferred_example.cpp --abigen
 
 ```
 
-CDT 1.6.1 
+CDT 1.6.1  (OUTDATED)
 EOSIO 1.8.0
 
 _______________
