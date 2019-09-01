@@ -1,6 +1,6 @@
-#include <eosio/transaction.hpp> // include this for transactions
+#include <eosiolib/transaction.hpp> // include this for transactions
 
-#include <eosio/eosio.hpp>
+#include <eosiolib/eosio.hpp>
 //#include <eosiolib/eosio.hpp>
 //#include <eosiolib/asset.hpp>
 
