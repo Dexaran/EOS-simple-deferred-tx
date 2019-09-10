@@ -14,5 +14,5 @@ _______________
 Multifile compilation in case of EOSIO cardgame examples:
 
 ```
-eosio-cpp -o jdex.wasm jdex.cpp --abigen -I.
+eosio-cpp -O3 jdex.wasm jdex.cpp --abigen
 ```
